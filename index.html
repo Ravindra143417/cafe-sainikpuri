@@ -1,1 +1,441 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Backyard Cafe – Boutique restaurant in Sainikpuri, Secunderabad. Open-air dining, craft coffee, global cuisine, live sports. Open 11AM–11PM.">
+<title>Backyard Cafe | Sainikpuri, Secunderabad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --ink:#0E0B06;--bark:#1E1208;--mahog:#3A1A0A;
+  --ember:#C4622D;--gold:#D4A843;--sand:#E8CFA0;--cream:#F5ECD8;
+  --fog:#7A6A56;--white:#FFFEF9;--leaf:#3D5A2E;
+  --ff-d:'Cormorant Garamond',Georgia,serif;
+  --ff-s:'Great Vibes',cursive;
+  --ff-b:'Outfit',sans-serif;
+}
+body{font-family:var(--ff-b);background:var(--bark);color:var(--cream);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--ink)}::-webkit-scrollbar-thumb{background:var(--ember);border-radius:2px}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:68px;transition:all .4s}
+nav.scrolled{background:rgba(14,11,6,.95);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(212,168,67,.15)}
+.nav-logo{font-family:var(--ff-s);font-size:2rem;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(232,207,160,.7);transition:color .2s;position:relative;padding-bottom:3px}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--gold)}.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--ember)!important;color:var(--white)!important;padding:9px 22px!important;border-radius:50px!important;letter-spacing:.08em!important;transition:all .2s!important}
+.nav-cta:hover{background:#A8521F!important;transform:translateY(-1px)!important}.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--sand);border-radius:2px}
+.mob-overlay{display:none;position:fixed;inset:0;z-index:998;background:rgba(14,11,6,.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob-overlay.open{display:flex}
+.mob-overlay a{font-family:var(--ff-d);font-size:2.5rem;color:var(--sand);text-decoration:none;transition:color .2s}
+.mob-overlay a:hover{color:var(--gold)}
+.mob-close{position:absolute;top:22px;right:5vw;background:none;border:none;font-size:2rem;color:var(--sand);cursor:pointer}
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 5vw 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('images/img1.jpg');background-size:cover;background-position:center;animation:heroZoom 14s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,11,6,.55) 0%,rgba(14,11,6,.4) 40%,rgba(14,11,6,.75) 80%,rgba(14,11,6,.95) 100%)}
+.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.eyebrow{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem;opacity:0;animation:fadeUp .8s .3s forwards}
+.hero-h1{font-family:var(--ff-d);font-size:clamp(4rem,11vw,9.5rem);line-height:.95;color:var(--white);margin-bottom:.5rem;opacity:0;animation:fadeUp .9s .5s forwards;text-shadow:0 4px 40px rgba(0,0,0,.5)}
+.hero-h1 em{color:var(--gold);font-style:italic;display:block}
+.hero-script{font-family:var(--ff-s);font-size:clamp(1.8rem,4vw,3.2rem);color:rgba(232,207,160,.85);margin-bottom:2rem;opacity:0;animation:fadeUp .9s .65s forwards}
+.hero-p{max-width:500px;font-size:.98rem;line-height:1.8;color:rgba(232,207,160,.65);font-weight:300;margin-bottom:2.5rem;opacity:0;animation:fadeUp .9s .8s forwards}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .95s forwards}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-primary{background:var(--ember);color:var(--white);box-shadow:0 4px 24px rgba(196,98,45,.4)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,98,45,.5);background:#A8521F}
+.btn-ghost{background:rgba(255,255,255,.08);color:var(--sand);border:1.5px solid rgba(232,207,160,.3);backdrop-filter:blur(8px)}
+.btn-ghost:hover{background:rgba(255,255,255,.14);border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-strip{margin-top:3.5rem;display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .9s 1.1s forwards}
+.strip-item{display:flex;align-items:center;gap:8px;font-size:.78rem;color:rgba(232,207,160,.6)}.strip-item strong{color:var(--sand)}
+.scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;opacity:0;animation:fadeUp 1s 1.4s forwards}
+.scroll-cue span{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(232,207,160,.4)}
+.scroll-bar{width:1px;height:44px;background:linear-gradient(var(--ember),transparent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.15}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.badges-row{background:rgba(14,11,6,.9);padding:16px 5vw;display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem;border-top:1px solid rgba(212,168,67,.15);border-bottom:1px solid rgba(212,168,67,.1)}
+.badge-chip{font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--sand);padding:6px 16px;border-radius:50px;background:rgba(255,255,255,.04);border:1px solid rgba(232,207,160,.12)}
+section{padding:100px 5vw}
+.sec-label{display:block;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.8rem}
+.sec-title{font-family:var(--ff-d);font-size:clamp(2rem,4.5vw,3.5rem);line-height:1.12;margin-bottom:1rem}
+.sec-sub{font-size:.95rem;line-height:1.85;color:var(--fog);font-weight:300}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s,transform .75s}.reveal.visible{opacity:1;transform:translateY(0)}
+.divider{display:flex;align-items:center;gap:1rem;margin:0 5vw}
+.div-line{flex:1;height:1px;background:rgba(232,207,160,.08)}.div-ico{font-size:.9rem;color:var(--gold)}
+#about{background:var(--ink);position:relative;overflow:hidden}
+.about-bg{position:absolute;inset:0;background-image:url('images/img2.jpg');background-size:cover;background-position:center top;opacity:.12;animation:parallaxShift 20s ease-in-out infinite alternate}
+@keyframes parallaxShift{from{background-position:center 0%}to{background-position:center 20%}}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1100px;margin:4rem auto 0;position:relative;z-index:1}
+.about-photo{position:relative}
+.about-photo-main{width:100%;aspect-ratio:3/4;border-radius:24px 80px 24px 80px;overflow:hidden;background-image:url('images/img2.jpg');background-size:cover;background-position:center;box-shadow:0 24px 64px rgba(0,0,0,.5);transition:transform .4s}
+.about-photo-main:hover{transform:scale(1.02)}
+.about-photo-float{position:absolute;bottom:-20px;right:-20px;width:160px;height:160px;border-radius:50%;background-image:url('images/img4.jpg');background-size:cover;background-position:center;border:5px solid var(--ink);box-shadow:0 8px 32px rgba(0,0,0,.5);animation:floatBob 6s ease-in-out infinite}
+@keyframes floatBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.about-badge{position:absolute;top:-16px;left:-16px;width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--ember),#A8521F);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--white);text-align:center;box-shadow:0 6px 24px rgba(196,98,45,.5);border:3px solid var(--ink);animation:floatBob 4s ease-in-out infinite reverse}
+.about-badge .num{font-family:var(--ff-d);font-size:1.6rem;font-weight:700;line-height:1}.about-badge .lbl{font-size:.55rem;letter-spacing:.06em;margin-top:2px;color:rgba(255,255,255,.75)}
+.about-vals{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem}
+.val-card{background:rgba(255,255,255,.03);border:1px solid rgba(232,207,160,.08);border-radius:12px;padding:16px;transition:border-color .3s,transform .3s}
+.val-card:hover{border-color:rgba(196,98,45,.3);transform:translateY(-3px)}
+.val-card h4{font-family:var(--ff-d);font-size:1rem;color:var(--sand);margin-bottom:4px}.val-card p{font-size:.78rem;color:var(--fog);line-height:1.6}
+.val-card .icon-bar{width:28px;height:2px;background:var(--ember);border-radius:2px;margin-bottom:10px}
+#menu{background:var(--ink)}
+.menu-hd{text-align:center;margin-bottom:2.5rem}
+.menu-tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
+.tab{padding:9px 22px;border-radius:50px;border:1px solid rgba(232,207,160,.15);background:transparent;font-family:var(--ff-b);font-size:.73rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--fog);cursor:pointer;transition:all .22s}
+.tab.on,.tab:hover{background:var(--ember);border-color:var(--ember);color:var(--white)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto}
+.mcard{background:rgba(255,255,255,.03);border:1px solid rgba(232,207,160,.07);border-radius:20px;overflow:hidden;transition:transform .35s,box-shadow .35s,border-color .35s}
+.mcard:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.45);border-color:rgba(196,98,45,.25)}
+.mcard-img{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.mcard-img .emoji{font-size:5.5rem;line-height:1;position:relative;z-index:2;filter:drop-shadow(0 4px 16px rgba(0,0,0,.5));transition:transform .4s;user-select:none}
+.mcard:hover .mcard-img .emoji{transform:scale(1.12) translateY(-4px)}
+.mcard-img::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.04) 50%,transparent 70%);opacity:0;transition:opacity .4s}
+.mcard:hover .mcard-img::after{opacity:1}
+.p1{background:linear-gradient(145deg,#141e08,#243010)}.p2{background:linear-gradient(145deg,#0a1e10,#162c14)}.p3{background:linear-gradient(145deg,#1a1008,#2e1a0a)}.p4{background:linear-gradient(145deg,#200c04,#381806)}.p5{background:linear-gradient(145deg,#100c04,#1e1806)}.p6{background:linear-gradient(145deg,#281200,#4a2200)}.p7{background:linear-gradient(145deg,#300800,#501000)}.p8{background:linear-gradient(145deg,#201808,#382a0c)}.p9{background:linear-gradient(145deg,#141404,#242404)}.p10{background:linear-gradient(145deg,#281e00,#483800)}.p11{background:linear-gradient(145deg,#0c0c04,#181808)}.p12{background:linear-gradient(145deg,#280800,#4a1200)}.p13{background:linear-gradient(145deg,#200c00,#3c1400)}.p14{background:linear-gradient(145deg,#201008,#3a1e0e)}.p15{background:linear-gradient(145deg,#081420,#102038)}.p16{background:linear-gradient(145deg,#200800,#3c1000)}.p17{background:linear-gradient(145deg,#280400,#480c00)}.p18{background:linear-gradient(145deg,#1a0e04,#2e1a08)}.p19{background:linear-gradient(145deg,#100e08,#1e1c10)}.p20{background:linear-gradient(145deg,#100818,#1e1030)}.p21{background:linear-gradient(145deg,#281400,#4a2800)}.p22{background:linear-gradient(145deg,#200414,#3c0828)}.p23{background:linear-gradient(145deg,#061408,#0e2410)}.p24{background:linear-gradient(145deg,#1a1006,#2e1e0a)}.p25{background:linear-gradient(145deg,#041810,#0a2c1c)}.p26{background:linear-gradient(145deg,#080c1e,#101840)}.p27{background:linear-gradient(145deg,#200410,#3c0820)}.p28{background:linear-gradient(145deg,#1a0800,#301000)}.p29{background:linear-gradient(145deg,#150804,#280e06)}.p30{background:linear-gradient(145deg,#0a1a18,#0e2c28)}.p31{background:linear-gradient(145deg,#181020,#2a1c38)}.p32{background:linear-gradient(145deg,#1a1004,#301c08)}.p33{background:linear-gradient(145deg,#04180e,#082c18)}
+.bestseller{position:absolute;top:10px;left:10px;background:var(--gold);color:var(--ink);font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:50px;z-index:3}
+.vbadge{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:4px;border:2px solid;display:flex;align-items:center;justify-content:center;z-index:3;background:rgba(0,0,0,.4)}
+.vbadge.v{border-color:#5A9A40}.vbadge.v::after{content:'';width:8px;height:8px;border-radius:50%;background:#5A9A40}
+.vbadge.nv{border-color:#C04040}.vbadge.nv::after{content:'';width:8px;height:8px;border-radius:50%;background:#C04040}
+.mcard-body{padding:18px 20px 20px}
+.mcard-body h3{font-family:var(--ff-d);font-size:1.12rem;color:var(--sand);margin-bottom:5px;line-height:1.3}
+.mcard-body p{font-size:.79rem;color:var(--fog);line-height:1.65;margin-bottom:14px}
+.mcard-ft{display:flex;align-items:center;justify-content:space-between}
+.price{font-family:var(--ff-d);font-size:1.2rem;color:var(--gold);font-weight:700}
+.addbtn{width:34px;height:34px;border-radius:50%;background:var(--ember);color:var(--white);border:none;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s,box-shadow .2s}
+.addbtn:hover{background:var(--gold);color:var(--ink);transform:scale(1.15);box-shadow:0 4px 16px rgba(212,168,67,.4)}
+.mi{display:none}.mi.show{display:block}
+.order-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:3rem}
+.olink{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:50px;font-size:.8rem;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:.07em;transition:transform .2s,box-shadow .2s}
+.olink:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.oz{background:#E23744;color:#fff}.os{background:#FC8019;color:#fff}.ow{background:#25D366;color:#fff}
+#gallery{background:var(--ink);padding:100px 5vw}
+.gal-hd{text-align:center;margin-bottom:2.5rem}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto 1.5rem}
+.gcell{border-radius:16px;overflow:hidden;position:relative;cursor:pointer}
+.gcell img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .4s}
+.gcell:hover img{transform:scale(1.08);filter:brightness(1.1)}
+.gcell .glabel{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,6,2,.9));padding:30px 14px 14px;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);opacity:0;transition:opacity .35s}
+.gcell:hover .glabel{opacity:1}
+.g1{grid-column:1/3;grid-row:1;height:260px}.g2{grid-column:3;grid-row:1;height:260px}.g3{grid-column:4;grid-row:1;height:260px}.g4{grid-column:1;grid-row:2;height:240px}.g5{grid-column:2/4;grid-row:2;height:240px}.g6{grid-column:4;grid-row:2;height:240px}
+.insta-tag{text-align:center;font-size:.85rem;color:var(--fog);margin-top:1.5rem}.insta-tag a{color:var(--gold);text-decoration:none;font-weight:500}
+#events{position:relative;overflow:hidden}
+.events-bg{position:absolute;inset:0;background-image:url('images/img3.jpg');background-size:cover;background-position:center;animation:parallaxShift 18s ease-in-out infinite alternate}
+.events-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,11,6,.9) 0%,rgba(14,11,6,.78) 60%,rgba(58,26,10,.85) 100%)}
+.ev-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;max-width:1100px;margin:4rem auto 0;position:relative;z-index:1}
+.ev-list{display:flex;flex-direction:column;gap:12px;margin:2rem 0}
+.ev-item{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(232,207,160,.1);border-radius:12px;backdrop-filter:blur(8px);transition:border-color .3s,background .3s}
+.ev-item:hover{border-color:rgba(196,98,45,.3);background:rgba(255,255,255,.07)}
+.ev-ico{width:42px;height:42px;border-radius:10px;background:var(--ember);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ev-info h4{font-family:var(--ff-d);font-size:1rem;color:var(--sand);margin-bottom:3px}.ev-info p{font-size:.78rem;color:var(--fog);line-height:1.6}
+.bform{background:rgba(14,11,6,.7);border:1px solid rgba(232,207,160,.12);border-radius:20px;padding:32px;backdrop-filter:blur(20px)}
+.bform h3{font-family:var(--ff-d);font-size:1.5rem;color:var(--sand);margin-bottom:1.5rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1rem}.fg label{display:block;font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--fog);margin-bottom:6px}
+.fg input,.fg select,.fg textarea{width:100%;padding:11px 15px;border:1.5px solid rgba(232,207,160,.12);border-radius:10px;background:rgba(255,255,255,.05);font-family:var(--ff-b);font-size:.88rem;color:var(--cream);outline:none;transition:border-color .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--ember)}
+.fg select option{background:var(--bark);color:var(--cream)}
+.fg textarea{resize:vertical;min-height:80px}.fg input::placeholder,.fg textarea::placeholder{color:rgba(138,122,106,.4)}
+.btn-sub{width:100%;padding:14px;background:linear-gradient(135deg,var(--ember),#A8521F);color:var(--white);border:none;border-radius:50px;font-family:var(--ff-b);font-size:.9rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .2s;box-shadow:0 4px 20px rgba(196,98,45,.4)}
+.btn-sub:hover{opacity:.9;transform:translateY(-2px)}
+#reviews{background:var(--ink)}
+.rev-hd{text-align:center;margin-bottom:2.5rem}
+.rating-big{display:flex;flex-direction:column;align-items:center;margin-bottom:1.5rem}
+.rnum{font-family:var(--ff-d);font-size:5rem;color:var(--gold);line-height:1}
+.rstars{font-size:1.5rem;color:var(--gold);letter-spacing:4px;margin:4px 0}.rcount{font-size:.78rem;color:var(--fog)}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.rcard{background:rgba(255,255,255,.03);border:1px solid rgba(232,207,160,.07);border-radius:18px;padding:28px;position:relative;transition:border-color .3s,transform .3s}
+.rcard:hover{border-color:rgba(212,168,67,.18);transform:translateY(-4px)}
+.rcard::before{content:'"';position:absolute;top:14px;left:20px;font-family:var(--ff-d);font-size:5rem;color:rgba(196,98,45,.15);line-height:1}
+.rcard-stars{color:var(--gold);font-size:.85rem;margin-bottom:10px}.rcard-txt{font-size:.88rem;color:var(--fog);line-height:1.8;margin-bottom:14px}
+.rcard-auth{display:flex;align-items:center;gap:10px}
+.avt{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600;color:var(--white);flex-shrink:0}
+.aname{font-weight:500;font-size:.88rem;color:var(--sand)}.adate{font-size:.72rem;color:var(--fog)}
+#contact{background:var(--mahog)}
+.con-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;max-width:1100px;margin:4rem auto 0;align-items:start}
+.con-details{display:flex;flex-direction:column;gap:1.2rem;margin-bottom:2rem}
+.con-row{display:flex;gap:14px;align-items:flex-start}
+.con-ico{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.con-lbl{font-size:.68rem;color:var(--fog);font-weight:500;text-transform:uppercase;letter-spacing:.08em}.con-val{font-size:.92rem;color:var(--sand);margin-top:3px}
+.con-val a{color:var(--sand);text-decoration:none;transition:color .2s}.con-val a:hover{color:var(--gold)}
+.hrs-table{width:100%;border-collapse:collapse;margin-bottom:2rem}
+.hrs-table td{padding:9px 0;font-size:.82rem;border-bottom:1px solid rgba(232,207,160,.08)}
+.hrs-table td:first-child{color:var(--fog)}.hrs-table td:last-child{text-align:right;font-weight:500;color:var(--sand)}.hrs-table tr:last-child td{border-bottom:none}
+.map-box{width:100%;aspect-ratio:4/3;border-radius:20px;overflow:hidden;position:relative;border:2px solid rgba(232,207,160,.1)}
+.map-box-bg{position:absolute;inset:0;background-image:url('images/img3.jpg');background-size:cover;background-position:center;filter:brightness(.4) saturate(.6);animation:parallaxShift 15s ease-in-out infinite alternate}
+.map-box-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;text-align:center;padding:2rem}
+.map-title{font-family:var(--ff-d);font-size:1.2rem;color:var(--sand)}.map-addr{font-size:.8rem;color:rgba(232,207,160,.7);line-height:1.7}
+.map-link{display:inline-flex;align-items:center;gap:6px;padding:11px 24px;background:var(--ember);color:var(--white);border-radius:50px;font-size:.8rem;font-weight:600;text-decoration:none;letter-spacing:.06em;transition:background .2s,transform .2s}
+.map-link:hover{background:#A8521F;transform:translateY(-2px)}
+.wa{position:fixed;bottom:28px;right:28px;z-index:997;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 6px 24px rgba(37,211,102,.45);text-decoration:none;animation:waPop 3s ease-in-out infinite;transition:transform .2s}
+.wa:hover{transform:scale(1.12)}
+@keyframes waPop{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.45)}50%{box-shadow:0 6px 40px rgba(37,211,102,.7)}}
+footer{background:var(--ink);padding:60px 5vw 28px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.ft-brand .logo{font-family:var(--ff-s);font-size:2.4rem;color:var(--gold);display:block;margin-bottom:12px}
+.ft-brand p{font-size:.82rem;line-height:1.8;color:var(--fog);max-width:260px}
+.ft-col h4{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:1rem;font-weight:500}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft-col ul li a{font-size:.82rem;color:var(--fog);text-decoration:none;transition:color .2s}.ft-col ul li a:hover{color:var(--gold)}
+.ft-div{height:1px;background:rgba(255,255,255,.05);margin-bottom:22px}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ft-bot p{font-size:.74rem;color:rgba(122,106,86,.5)}
+.ft-soc{display:flex;gap:10px}
+.sbtn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:.95rem;text-decoration:none;color:var(--fog);transition:background .2s,color .2s}
+.sbtn:hover{background:var(--ember);color:var(--white)}
+@media(max-width:960px){.nav-links{display:none}.hamburger{display:flex}.about-grid,.ev-grid,.con-grid{grid-template-columns:1fr;gap:2.5rem}.gal-grid{grid-template-columns:1fr 1fr}.g1,.g5{grid-column:1/3}.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.about-vals,.frow{grid-template-columns:1fr}.ft-grid{grid-template-columns:1fr}.hero-btns{flex-direction:column;align-items:center}.gal-grid{grid-template-columns:1fr}.g1,.g5{grid-column:1}section{padding:70px 5vw}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Backyard Cafe</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li><li><a href="#menu">Menu</a></li><li><a href="#gallery">Gallery</a></li>
+    <li><a href="#events">Events</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li>
+    <li><a class="nav-cta" href="https://wa.me/919390327845?text=Hi!+I'd+like+to+reserve+a+table+at+Backyard+Cafe,+Sainikpuri." target="_blank">Reserve a Table</a></li>
+  </ul>
+  <button class="hamburger" id="hamBtn"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-overlay" id="mobMenu">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="#about" class="mlink">About</a><a href="#menu" class="mlink">Menu</a>
+  <a href="#gallery" class="mlink">Gallery</a><a href="#events" class="mlink">Events</a>
+  <a href="#reviews" class="mlink">Reviews</a><a href="#contact" class="mlink">Contact</a>
+  <a href="https://wa.me/919390327845" target="_blank" class="btn btn-primary mlink" style="font-size:.85rem">Reserve a Table</a>
+</div>
+<section id="hero">
+  <div class="hero-bg"></div><div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="eyebrow">☕ Sainikpuri · Secunderabad</p>
+    <h1 class="hero-h1">Backyard<em>Cafe</em></h1>
+    <div class="hero-script">Your neighbourhood escape</div>
+    <p class="hero-p">Open-air dining, craft coffee, global cuisine, live sports &amp; a backyard that Sainikpuri calls home. Come hungry. Stay happy.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn btn-primary">Explore Menu</a>
+      <a href="https://wa.me/919390327845?text=Hi!+I'd+like+to+reserve+a+table." class="btn btn-ghost" target="_blank">Reserve a Table</a>
+    </div>
+    <div class="hero-strip">
+      <div class="strip-item">⭐ <strong>4.1</strong>&nbsp;Google Rating</div>
+      <div class="strip-item">🕐 Open <strong>11 AM – 11 PM</strong></div>
+      <div class="strip-item">📍 <strong>Sainikpuri,</strong>&nbsp;Secunderabad</div>
+      <div class="strip-item">📞 <strong>093903 27845</strong></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="scroll-bar"></div><span>Scroll</span></div>
+</section>
+<div class="badges-row">
+  <div class="badge-chip">🏡 Open-Air Dining</div><div class="badge-chip">🌍 Global Cuisine</div>
+  <div class="badge-chip">📺 Sports Live</div><div class="badge-chip">🎉 Group Events</div>
+  <div class="badge-chip">🐾 Pets Friendly</div><div class="badge-chip">🎭 Performance Venue</div>
+  <div class="badge-chip">🏷️ Special Offers</div>
+</div>
+<section id="about">
+  <div class="about-bg"></div>
+  <div class="about-grid">
+    <div class="about-photo reveal">
+      <div class="about-badge"><div class="num">4.1★</div><div class="lbl">Google<br>Rating</div></div>
+      <div class="about-photo-main"></div>
+      <div class="about-photo-float"></div>
+    </div>
+    <div class="reveal">
+      <span class="sec-label">Our Story</span>
+      <h2 class="sec-title">Born in a backyard,<br>loved by Sainikpuri</h2>
+      <p class="sec-sub" style="max-width:100%">What started as a passion project with garden chairs and great coffee has grown into Sainikpuri's most talked-about café. Nestled in Shaili Gardens, Backyard Cafe blends a boutique restaurant experience with the warmth of a neighbourhood hangout.</p>
+      <p class="sec-sub" style="max-width:100%;margin-top:1rem">From global cuisine and craft brews to live sports screenings and private events — every visit is a new experience in the same beloved backyard.</p>
+      <div class="about-vals">
+        <div class="val-card"><div class="icon-bar"></div><h4>Craft Coffee</h4><p>Espresso to manual brews — every cup made with care.</p></div>
+        <div class="val-card"><div class="icon-bar"></div><h4>Fresh Flavours</h4><p>Global cuisine meets local love — bold, fresh, to order.</p></div>
+        <div class="val-card"><div class="icon-bar"></div><h4>Open-Air Vibes</h4><p>Fairy lights, plants, and an ambience that relaxes you.</p></div>
+        <div class="val-card"><div class="icon-bar"></div><h4>Community Hub</h4><p>Sports, events, pets welcome — Sainikpuri's living room.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"><div class="div-line"></div><div class="div-ico">✦</div><div class="div-line"></div></div>
+<section id="menu">
+  <div class="menu-hd reveal">
+    <span class="sec-label">What We Serve</span>
+    <h2 class="sec-title">Our Menu</h2>
+    <p class="sec-sub" style="margin:0 auto;max-width:460px">⭐ Bestseller &nbsp;·&nbsp; <span style="color:#5A9A40;font-weight:600">●</span> Veg &nbsp;·&nbsp; <span style="color:#C04040;font-weight:600">●</span> Non-Veg</p>
+  </div>
+  <div class="menu-tabs reveal">
+    <button class="tab on" onclick="fMenu('all',this)">All</button>
+    <button class="tab" onclick="fMenu('salads',this)">Salads</button>
+    <button class="tab" onclick="fMenu('starters',this)">Veg Starters</button>
+    <button class="tab" onclick="fMenu('nonveg',this)">Non-Veg</button>
+    <button class="tab" onclick="fMenu('coffee',this)">Coffee</button>
+    <button class="tab" onclick="fMenu('special',this)">Specials</button>
+    <button class="tab" onclick="fMenu('drinks',this)">Drinks</button>
+    <button class="tab" onclick="fMenu('desserts',this)">Desserts</button>
+  </div>
+  <div class="menu-grid" id="mg">
+    <div class="mi show" data-cat="salads"><div class="mcard"><div class="mcard-img p1"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🥗</span></div><div class="mcard-body"><h3>Caesar Salad</h3><p>Crisp lettuce, creamy dressing, crunchy croutons and parmesan — a classic refreshing bite.</p><div class="mcard-ft"><span class="price">₹269</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="salads"><div class="mcard"><div class="mcard-img p2"><span class="bestseller">⭐ Bestseller</span><span class="vbadge nv"></span><span class="emoji">🍗</span></div><div class="mcard-body"><h3>Grilled Chicken Salad</h3><p>Fresh greens topped with juicy grilled chicken and zesty light seasoning.</p><div class="mcard-ft"><span class="price">₹319</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="salads"><div class="mcard"><div class="mcard-img p3"><span class="vbadge v"></span><span class="emoji">🧀</span></div><div class="mcard-body"><h3>Pan Tossed Paneer Salad</h3><p>Vibrant greens topped with soft pan-tossed paneer and light seasoning.</p><div class="mcard-ft"><span class="price">₹289</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="salads"><div class="mcard"><div class="mcard-img p4"><span class="vbadge v"></span><span class="emoji">🌮</span></div><div class="mcard-body"><h3>Mexican Nachos Salad</h3><p>Crunchy nachos, veggies and zesty Mexican flavors with creamy dressing.</p><div class="mcard-ft"><span class="price">₹269</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="salads"><div class="mcard"><div class="mcard-img p5"><span class="vbadge v"></span><span class="emoji">🍄</span></div><div class="mcard-body"><h3>Roasted Mushroom Salad</h3><p>Hearty greens and perfectly roasted mushrooms for a warm, earthy salad.</p><div class="mcard-ft"><span class="price">₹279</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="salads"><div class="mcard"><div class="mcard-img p6"><span class="vbadge v"></span><span class="emoji">🍍</span></div><div class="mcard-body"><h3>Sweet &amp; Spicy Pineapple Corn</h3><p>Juicy pineapple and sweet corn in a zesty sweet-spicy dressing.</p><div class="mcard-ft"><span class="price">₹279</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="starters"><div class="mcard"><div class="mcard-img p7"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🥔</span></div><div class="mcard-body"><h3>Honey Chilli Potato</h3><p>Crispy potato fingers in a sweet-spicy honey chilli glaze — utterly irresistible.</p><div class="mcard-ft"><span class="price">₹219</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="starters"><div class="mcard"><div class="mcard-img p8"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🫕</span></div><div class="mcard-body"><h3>Chilli Paneer</h3><p>Crispy paneer cubes in a spicy tangy chilli sauce — the bold Indo-Chinese classic.</p><div class="mcard-ft"><span class="price">₹249</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="starters"><div class="mcard"><div class="mcard-img p9"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🍢</span></div><div class="mcard-body"><h3>Café Special Paneer Saute Stick</h3><p>Juicy paneer skewers marinated in bold spices, grilled to perfection.</p><div class="mcard-ft"><span class="price">₹259</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="starters"><div class="mcard"><div class="mcard-img p10"><span class="vbadge v"></span><span class="emoji">🌽</span></div><div class="mcard-body"><h3>Crispy Corn</h3><p>Golden crunchy corn kernels tossed with spices — the perfect crispy snack.</p><div class="mcard-ft"><span class="price">₹209</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="starters"><div class="mcard"><div class="mcard-img p11"><span class="vbadge v"></span><span class="emoji">🫙</span></div><div class="mcard-body"><h3>Stuffed Chilli Mushroom</h3><p>Juicy mushrooms stuffed with spicy filling, tossed in bold chilli sauce.</p><div class="mcard-ft"><span class="price">₹269</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="starters"><div class="mcard"><div class="mcard-img p12"><span class="vbadge v"></span><span class="emoji">🧆</span></div><div class="mcard-body"><h3>Pepper Mushroom</h3><p>Tender mushrooms sautéed with cracked black pepper and aromatic spices.</p><div class="mcard-ft"><span class="price">₹259</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="starters"><div class="mcard"><div class="mcard-img p13"><span class="vbadge v"></span><span class="emoji">🫔</span></div><div class="mcard-body"><h3>Paneer Majestic</h3><p>Tender paneer in rich flavorful gravy with aromatic spices for a royal taste.</p><div class="mcard-ft"><span class="price">₹249</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="nonveg"><div class="mcard"><div class="mcard-img p14"><span class="bestseller">⭐ Bestseller</span><span class="vbadge nv"></span><span class="emoji">🍖</span></div><div class="mcard-body"><h3>Peri Peri Chicken Wings</h3><p>Juicy chicken wings in spicy tangy peri-peri sauce for a fiery flavorful kick.</p><div class="mcard-ft"><span class="price">₹319</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="nonveg"><div class="mcard"><div class="mcard-img p15"><span class="bestseller">⭐ Bestseller</span><span class="vbadge nv"></span><span class="emoji">🍗</span></div><div class="mcard-body"><h3>Drums of Heaven</h3><p>Crispy juicy chicken drumsticks in a spicy flavorful glaze — heavenly indulgence.</p><div class="mcard-ft"><span class="price">₹349</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="nonveg"><div class="mcard"><div class="mcard-img p16"><span class="bestseller">⭐ Bestseller</span><span class="vbadge nv"></span><span class="emoji">🦐</span></div><div class="mcard-body"><h3>Butter Garlic Prawns</h3><p>Tender prawns in rich butter and aromatic garlic — a savory indulgent seafood treat.</p><div class="mcard-ft"><span class="price">₹399</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="nonveg"><div class="mcard"><div class="mcard-img p17"><span class="vbadge nv"></span><span class="emoji">🐟</span></div><div class="mcard-body"><h3>Fish &amp; Chips</h3><p>Crispy battered fish with golden fries — a classic hearty and satisfying meal.</p><div class="mcard-ft"><span class="price">₹379</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="nonveg"><div class="mcard"><div class="mcard-img p18"><span class="vbadge nv"></span><span class="emoji">🍡</span></div><div class="mcard-body"><h3>Chicken Lollipop</h3><p>Crispy marinated chicken wings shaped like lollipops in a spicy tangy sauce.</p><div class="mcard-ft"><span class="price">₹349</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="nonveg"><div class="mcard"><div class="mcard-img p19"><span class="vbadge nv"></span><span class="emoji">🌶️</span></div><div class="mcard-body"><h3>Chilli Chicken Wet</h3><p>Juicy chicken in a spicy tangy chilli sauce — saucy, bold and deeply flavorful.</p><div class="mcard-ft"><span class="price">₹259</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="nonveg"><div class="mcard"><div class="mcard-img p20"><span class="vbadge nv"></span><span class="emoji">🦞</span></div><div class="mcard-body"><h3>Ginger Prawn Wet</h3><p>Juicy prawns in fragrant ginger-infused sauce for a spicy flavorful seafood delight.</p><div class="mcard-ft"><span class="price">₹299</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="coffee"><div class="mcard"><div class="mcard-img p21"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">☕</span></div><div class="mcard-body"><h3>Cappuccino</h3><p>Perfectly balanced espresso with velvety steamed milk foam — the café classic.</p><div class="mcard-ft"><span class="price">₹159</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="coffee"><div class="mcard"><div class="mcard-img p22"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🧊</span></div><div class="mcard-body"><h3>Iced Spanish Latte</h3><p>Espresso meets sweetened condensed milk over ice — smooth, bold and totally addictive.</p><div class="mcard-ft"><span class="price">₹199</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="coffee"><div class="mcard"><div class="mcard-img p23"><span class="vbadge v"></span><span class="emoji">💜</span></div><div class="mcard-body"><h3>Café Special Lavender Mocha</h3><p>A floral twist — espresso, chocolate and fragrant lavender in every sip.</p><div class="mcard-ft"><span class="price">₹199</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="coffee"><div class="mcard"><div class="mcard-img p24"><span class="vbadge v"></span><span class="emoji">🫖</span></div><div class="mcard-body"><h3>Pour Over</h3><p>Manual slow pour over single-origin coffee — for the true coffee connoisseur.</p><div class="mcard-ft"><span class="price">₹259</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="coffee"><div class="mcard"><div class="mcard-img p25"><span class="vbadge v"></span><span class="emoji">🍵</span></div><div class="mcard-body"><h3>Iced Mocha</h3><p>Rich espresso, chocolate sauce and milk over ice — a chocolatey chilled delight.</p><div class="mcard-ft"><span class="price">₹189</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="coffee"><div class="mcard"><div class="mcard-img p26"><span class="vbadge v"></span><span class="emoji">🥤</span></div><div class="mcard-body"><h3>Coffee Mojito</h3><p>Cold brew meets the refreshing mojito — a unique energising summer sipper.</p><div class="mcard-ft"><span class="price">₹189</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="special"><div class="mcard"><div class="mcard-img p27"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🍊</span></div><div class="mcard-body"><h3>Orange Espresso</h3><p>Bold espresso over fresh orange — a citrusy energising Backyard signature.</p><div class="mcard-ft"><span class="price">₹219</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="special"><div class="mcard"><div class="mcard-img p28"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🍒</span></div><div class="mcard-body"><h3>Cranberry Espresso</h3><p>Espresso meets tart cranberry in a striking layered drink — bold and beautiful.</p><div class="mcard-ft"><span class="price">₹219</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="special"><div class="mcard"><div class="mcard-img p29"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🍵</span></div><div class="mcard-body"><h3>Matcha</h3><p>Premium ceremonial grade matcha — earthy, smooth and naturally energising.</p><div class="mcard-ft"><span class="price">₹222</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="special"><div class="mcard"><div class="mcard-img p30"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🥛</span></div><div class="mcard-body"><h3>Vietnamese Shakerato</h3><p>Espresso shaken with condensed milk for a frothy chilled caffeine hit.</p><div class="mcard-ft"><span class="price">₹249</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="special"><div class="mcard"><div class="mcard-img p31"><span class="vbadge v"></span><span class="emoji">🌺</span></div><div class="mcard-body"><h3>Espresso Fruitmix</h3><p>Espresso blended with a burst of fresh fruits — a vibrant Backyard original.</p><div class="mcard-ft"><span class="price">₹229</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="special"><div class="mcard"><div class="mcard-img p32"><span class="vbadge v"></span><span class="emoji">🌱</span></div><div class="mcard-body"><h3>Espresso Refreshner</h3><p>Light, cooling espresso with botanical freshness — uniquely invigorating.</p><div class="mcard-ft"><span class="price">₹229</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="drinks"><div class="mcard"><div class="mcard-img p33"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🍹</span></div><div class="mcard-body"><h3>Mojito Pitcher</h3><p>A full pitcher of refreshing mojito — perfect for groups and sunny afternoons.</p><div class="mcard-ft"><span class="price">₹899</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="drinks"><div class="mcard"><div class="mcard-img p1"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🫐</span></div><div class="mcard-body"><h3>Blueberry Shake</h3><p>Rich blueberry milkshake loaded with real fruit — sweet, creamy and satisfying.</p><div class="mcard-ft"><span class="price">₹219</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="drinks"><div class="mcard"><div class="mcard-img p2"><span class="vbadge v"></span><span class="emoji">🌸</span></div><div class="mcard-body"><h3>Hibiscus Iced Tea</h3><p>Floral, tart and naturally vibrant — hibiscus cold brew for a refreshing sip.</p><div class="mcard-ft"><span class="price">₹189</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="drinks"><div class="mcard"><div class="mcard-img p3"><span class="vbadge v"></span><span class="emoji">🍪</span></div><div class="mcard-body"><h3>Lotus Biscoff Shake</h3><p>Caramelised Biscoff milkshake — creamy, indulgent and absolutely irresistible.</p><div class="mcard-ft"><span class="price">₹229</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="drinks"><div class="mcard"><div class="mcard-img p4"><span class="vbadge v"></span><span class="emoji">🍈</span></div><div class="mcard-body"><h3>Kiwi Iced Tea</h3><p>Bright tangy kiwi cold brew iced tea — refreshingly tropical and light.</p><div class="mcard-ft"><span class="price">₹189</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="drinks"><div class="mcard"><div class="mcard-img p5"><span class="vbadge v"></span><span class="emoji">🍇</span></div><div class="mcard-body"><h3>Black Currant Shake</h3><p>Deep, rich black currant milkshake — sweet, tart and beautifully purple.</p><div class="mcard-ft"><span class="price">₹199</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="drinks"><div class="mcard"><div class="mcard-img p6"><span class="vbadge v"></span><span class="emoji">🥭</span></div><div class="mcard-body"><h3>Mango Shake</h3><p>Thick, luscious mango shake made with ripe fresh mangoes.</p><div class="mcard-ft"><span class="price">₹199</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="drinks"><div class="mcard"><div class="mcard-img p7"><span class="vbadge v"></span><span class="emoji">🍉</span></div><div class="mcard-body"><h3>Watermelon Refreshner</h3><p>Chilled watermelon with a cooling twist — summer in every sip.</p><div class="mcard-ft"><span class="price">₹199</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="desserts"><div class="mcard"><div class="mcard-img p8"><span class="bestseller">⭐ Bestseller</span><span class="vbadge v"></span><span class="emoji">🍫</span></div><div class="mcard-body"><h3>Brownie Sizzler</h3><p>Warm fudgy brownie sizzling on a hot plate with vanilla ice cream — pure indulgence.</p><div class="mcard-ft"><span class="price">₹249</span><button class="addbtn">+</button></div></div></div></div>
+    <div class="mi show" data-cat="desserts"><div class="mcard"><div class="mcard-img p9"><span class="vbadge v"></span><span class="emoji">🍨</span></div><div class="mcard-body"><h3>Brownie With Ice Cream</h3><p>Classic warm brownie with a generous scoop of creamy vanilla ice cream.</p><div class="mcard-ft"><span class="price">₹199</span><button class="addbtn">+</button></div></div></div></div>
+  </div>
+  <div class="order-row reveal">
+    <a class="olink oz" href="https://zomato.com" target="_blank">Order on Zomato</a>
+    <a class="olink os" href="https://swiggy.com" target="_blank">Order on Swiggy</a>
+    <a class="olink ow" href="https://wa.me/919390327845?text=Hi!+I'd+like+to+place+an+order." target="_blank">WhatsApp Order</a>
+  </div>
+</section>
+<div class="divider"><div class="div-line"></div><div class="div-ico">✦</div><div class="div-line"></div></div>
+<section id="gallery">
+  <div class="gal-hd reveal"><span class="sec-label">The Vibe</span><h2 class="sec-title">A peek inside Backyard</h2></div>
+  <div class="gal-grid reveal">
+    <div class="gcell g1"><img src="images/img3.jpg" alt="Open air evening seating" loading="lazy"><span class="glabel">Open-Air Backyard Seating</span></div>
+    <div class="gcell g2"><img src="images/img1.jpg" alt="Backyard Cafe entrance" loading="lazy"><span class="glabel">The Iconic Entrance</span></div>
+    <div class="gcell g3"><img src="images/img5.jpg" alt="Food" loading="lazy"><span class="glabel">Bold Flavours</span></div>
+    <div class="gcell g4"><img src="images/img4.jpg" alt="Art wall" loading="lazy"><span class="glabel">Art Wall Inside</span></div>
+    <div class="gcell g5"><img src="images/img2.jpg" alt="Night seating" loading="lazy"><span class="glabel">Magical Fairy Light Evenings</span></div>
+    <div class="gcell g6"><img src="images/img7.jpg" alt="Interior" loading="lazy"><span class="glabel">Eclectic Interior</span></div>
+  </div>
+  <p class="insta-tag reveal">Follow us <a href="https://instagram.com" target="_blank">@backyardcafe.sainikpuri</a> · Tag us for a chance to be featured!</p>
+</section>
+<section id="events">
+  <div class="events-bg"></div><div class="events-overlay"></div>
+  <div class="ev-grid">
+    <div class="reveal">
+      <span class="sec-label">Private Bookings</span>
+      <h2 class="sec-title">Host your moments with us</h2>
+      <p class="sec-sub" style="max-width:100%">Our open-air backyard transforms into the perfect venue — from intimate birthday lunches to corporate gatherings and live sports nights.</p>
+      <div class="ev-list">
+        <div class="ev-item"><div class="ev-ico">🎂</div><div class="ev-info"><h4>Birthday Celebrations</h4><p>Décor, custom cakes, and a curated menu for your special day.</p></div></div>
+        <div class="ev-item"><div class="ev-ico">💼</div><div class="ev-info"><h4>Corporate Lunches</h4><p>Private seating for up to 40 guests with tailored catering packages.</p></div></div>
+        <div class="ev-item"><div class="ev-ico">🌸</div><div class="ev-info"><h4>Kitty Parties</h4><p>Themed snack spreads, unlimited chai, and a cosy backyard setup.</p></div></div>
+        <div class="ev-item"><div class="ev-ico">📺</div><div class="ev-info"><h4>Sports Screening Events</h4><p>Live match screenings with group seating, pitchers, and stadium-style fun.</p></div></div>
+      </div>
+      <a href="https://wa.me/919390327845?text=Hi!+I'd+like+to+enquire+about+hosting+an+event+at+Backyard+Cafe." class="btn btn-primary" target="_blank">Enquire on WhatsApp</a>
+    </div>
+    <div class="bform reveal">
+      <h3>Quick Booking Enquiry</h3>
+      <div class="frow">
+        <div class="fg"><label>Your Name</label><input type="text" placeholder="e.g. Ravi Kumar"></div>
+        <div class="fg"><label>Phone</label><input type="tel" placeholder="+91 93903 27845"></div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label>Occasion</label><select><option>Birthday Party</option><option>Corporate Lunch</option><option>Kitty Party</option><option>Sports Night</option><option>Family Gathering</option><option>Other</option></select></div>
+        <div class="fg"><label>Preferred Date</label><input type="date"></div>
+      </div>
+      <div class="fg"><label>No. of Guests</label><input type="number" placeholder="e.g. 20" min="5"></div>
+      <div class="fg"><label>Special Requests</label><textarea placeholder="Cake, décor, dietary needs, screening preferences…"></textarea></div>
+      <button class="btn-sub" onclick="submitForm(this)">Send Enquiry</button>
+    </div>
+  </div>
+</section>
+<div class="divider"><div class="div-line"></div><div class="div-ico">✦</div><div class="div-line"></div></div>
+<section id="reviews">
+  <div class="rev-hd reveal">
+    <span class="sec-label">What Guests Say</span>
+    <h2 class="sec-title">Loved by Sainikpuri</h2>
+    <div class="rating-big"><div class="rnum">4.1</div><div class="rstars">★★★★☆</div><div class="rcount">Google Reviews · Backyard Cafe, Sainikpuri, Secunderabad</div></div>
+  </div>
+  <div class="rev-grid">
+    <div class="rcard reveal"><div class="rcard-stars">★★★★★</div><p class="rcard-txt">Absolutely love the vibe here! The open-air seating with fairy lights is magical in the evening. The Orange Espresso is unlike anything I've had in Hyderabad. Great place to hang with friends or even bring your dog!</p><div class="rcard-auth"><div class="avt" style="background:#C4622D">RK</div><div><div class="aname">Ravi Kumar</div><div class="adate">2 weeks ago · Google Review</div></div></div></div>
+    <div class="rcard reveal"><div class="rcard-stars">★★★★☆</div><p class="rcard-txt">We hosted our team outing here and the staff went above and beyond. Drums of Heaven and Peri Peri Wings were a huge hit. The live sports screen made it feel like a proper event. Will definitely book again!</p><div class="rcard-auth"><div class="avt" style="background:#3D5A2E">PM</div><div><div class="aname">Priya Mehta</div><div class="adate">1 month ago · Google Review</div></div></div></div>
+    <div class="rcard reveal"><div class="rcard-stars">★★★★☆</div><p class="rcard-txt">Hidden gem in Sainikpuri! The art wall inside is super cool and the Brownie Sizzler is to die for. Evening ambience is magical. Great value for money. Highly recommend to anyone who hasn't tried it yet!</p><div class="rcard-auth"><div class="avt" style="background:#4A2210">SP</div><div><div class="aname">Suresh Patel</div><div class="adate">3 weeks ago · Google Review</div></div></div></div>
+  </div>
+</section>
+<section id="contact">
+  <div class="con-grid">
+    <div class="reveal">
+      <span class="sec-label">Find Us</span>
+      <h2 class="sec-title">Visit Backyard Cafe</h2>
+      <div class="con-details" style="margin-top:2rem">
+        <div class="con-row"><div class="con-ico">📍</div><div><div class="con-lbl">Address</div><div class="con-val">Plot 24, SriKrish Enclave, Shaili Gardens Main Rd,<br>Shaili Gardens, Sainikpuri, Secunderabad 500087</div></div></div>
+        <div class="con-row"><div class="con-ico">📞</div><div><div class="con-lbl">Phone</div><div class="con-val"><a href="tel:+919390327845">093903 27845</a></div></div></div>
+        <div class="con-row"><div class="con-ico">💬</div><div><div class="con-lbl">WhatsApp</div><div class="con-val"><a href="https://wa.me/919390327845" target="_blank">Chat with us on WhatsApp</a></div></div></div>
+        <div class="con-row"><div class="con-ico">🛵</div><div><div class="con-lbl">Order Online</div><div class="con-val"><a href="https://swiggy.com" target="_blank">Swiggy</a> &nbsp;·&nbsp; <a href="https://zomato.com" target="_blank">Zomato</a></div></div></div>
+      </div>
+      <table class="hrs-table">
+        <tr><td>Monday – Sunday</td><td>11:00 AM – 11:00 PM</td></tr>
+        <tr><td>Public Holidays</td><td>11:00 AM – 11:00 PM</td></tr>
+      </table>
+    </div>
+    <div class="reveal">
+      <div class="map-box">
+        <div class="map-box-bg"></div>
+        <div class="map-box-content">
+          <div style="font-size:2.5rem">🗺️</div>
+          <div class="map-title">Backyard Cafe, Sainikpuri</div>
+          <div class="map-addr">Plot 24, SriKrish Enclave<br>Shaili Gardens Main Rd<br>Sainikpuri, Secunderabad 500087</div>
+          <a class="map-link" href="https://maps.google.com/?q=Backyard+Cafe+Sainikpuri+Secunderabad+500087" target="_blank">📍 Open in Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand"><span class="logo">Backyard Cafe</span><p>Boutique café & restaurant in Sainikpuri, Secunderabad. Open-air dining, global cuisine, craft coffee, live sports & events. Open daily 11 AM – 11 PM.</p></div>
+    <div class="ft-col"><h4>Navigate</h4><ul><li><a href="#about">About Us</a></li><li><a href="#menu">Menu</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#events">Events</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Order Online</h4><ul><li><a href="https://zomato.com" target="_blank">Zomato</a></li><li><a href="https://swiggy.com" target="_blank">Swiggy</a></li><li><a href="https://wa.me/919390327845" target="_blank">WhatsApp Order</a></li></ul></div>
+    <div class="ft-col"><h4>Info</h4><ul><li><a href="#">Daily 11 AM – 11 PM</a></li><li><a href="tel:+919390327845">093903 27845</a></li><li><a href="https://maps.google.com/?q=Backyard+Cafe+Sainikpuri" target="_blank">Get Directions</a></li></ul></div>
+  </div>
+  <div class="ft-div"></div>
+  <div class="ft-bot">
+    <p>© 2025 Backyard Cafe · Plot 24, Shaili Gardens, Sainikpuri, Secunderabad, Telangana 500087</p>
+    <div class="ft-soc"><a class="sbtn" href="https://instagram.com" target="_blank">📸</a><a class="sbtn" href="https://wa.me/919390327845" target="_blank">💬</a><a class="sbtn" href="https://maps.google.com/?q=Backyard+Cafe+Sainikpuri" target="_blank">📍</a><a class="sbtn" href="https://zomato.com" target="_blank">🍽️</a></div>
+  </div>
+</footer>
+<a class="wa" href="https://wa.me/919390327845?text=Hi!+I+found+you+on+your+website.+Enquiring+about+Backyard+Cafe,+Sainikpuri." target="_blank" title="Chat on WhatsApp">💬</a>
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+const hamBtn=document.getElementById('hamBtn'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
+hamBtn.addEventListener('click',()=>mobMenu.classList.add('open'));
+mobClose.addEventListener('click',()=>mobMenu.classList.remove('open'));
+document.querySelectorAll('.mlink').forEach(l=>l.addEventListener('click',()=>mobMenu.classList.remove('open')));
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function fMenu(cat,btn){document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.querySelectorAll('.mi').forEach(mi=>{mi.classList.toggle('show',cat==='all'||mi.dataset.cat===cat)})}
+document.querySelectorAll('.addbtn').forEach(btn=>{btn.addEventListener('click',function(){this.textContent='✓';this.style.background='#3D5A2E';setTimeout(()=>{this.textContent='+';this.style.background='var(--ember)'},1500)})});
+function submitForm(btn){btn.textContent="We'll call you soon!";btn.style.background='#3D5A2E';setTimeout(()=>{btn.textContent='Send Enquiry';btn.style.background=''},4000)}
+</script>
+</body>
+</html>
